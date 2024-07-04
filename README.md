@@ -7,3 +7,4 @@
 - dog
 - mercenary (tank, healer, damage)
 - classes: druid
+- build system: diablo 2

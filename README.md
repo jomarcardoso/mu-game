@@ -7,4 +7,11 @@
 - dog
 - mercenary (tank, healer, damage)
 - classes: druid
-- build system: diablo 2
+- build system: diablo 2 with 3 trees
+- mob drops only feed-stock
+- craft
+- npcs accept mined gold and sell everything
+- rare wandering salesman
+- npc specialist in some crafts
+- npc in hard areas
+- map with puzzles

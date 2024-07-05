@@ -28,4 +28,5 @@
 - mobs come from the edges and from caves
 - the character evolve like Ragnarok
 - special quests to evolve or get a new ability
-- economy by region, woods, meat, fabric, 
+- economy by region, woods, meat, fabric,
+- dodge, avoid, block

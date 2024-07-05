@@ -30,3 +30,5 @@
 - special quests to evolve or get a new ability
 - economy by region, woods, meat, fabric,
 - dodge, avoid, block
+- mana,
+- npc with special story that will return you a favor

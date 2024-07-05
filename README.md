@@ -5,7 +5,7 @@
 - [soundtrack](https://youtu.be/XKmjAyPj_7U?si=ezkUztcqMB9cdkQU)
 - market: auction house
 - dog
-- mercenary (tank, healer, damage)
+- mercenary (tank, healer, damage, bruiser) level by price
 - classes: druid, mage
 - factions
 - start in a town like wow
@@ -13,6 +13,9 @@
 - mob drops only feed-stock raw material
 - craft
 - pay expensive blacksmith (do not broke your armor)
+- reputation with clans
+- return to regions
+- dragons
 - high level areas near low level areas
 - you can steal items from enemies
 - npcs accept mined gold and sell everything
@@ -23,3 +26,4 @@
 - mobs come from the edges and from caves
 - the character evolve like Ragnarok
 - special quests to evolve or get a new ability
+- economy by region, woods, meat, fabric, 

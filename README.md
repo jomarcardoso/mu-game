@@ -6,7 +6,9 @@
 - market: auction house
 - dog
 - mercenary (tank, healer, damage, bruiser) level by price
-- classes: druid, mage
+  - hire a mercenary that have an ability to complete a dungeon 
+- classes: druid, mage, archer,
+- races: born in different regions
 - factions
 - start in a town like wow
 - build system: diablo 2 with 3 trees

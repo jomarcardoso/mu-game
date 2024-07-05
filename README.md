@@ -1,6 +1,6 @@
 # mu-game
 
-- [story](https://en.m.wikipedia.org/wiki/Mu_mythical_lost_continent)
+- [lore](https://en.m.wikipedia.org/wiki/Mu_mythical_lost_continent)
 - art: shadow flare
 - [soundtrack](https://youtu.be/XKmjAyPj_7U?si=ezkUztcqMB9cdkQU)
 - market: auction house
@@ -10,8 +10,11 @@
 - factions
 - start in a town like wow
 - build system: diablo 2 with 3 trees
-- mob drops only feed-stock
+- mob drops only feed-stock raw material
 - craft
+- pay expensive blacksmith (do not broke your armor)
+- high level areas near low level areas
+- you can steal items from enemies
 - npcs accept mined gold and sell everything
 - rare wandering salesman
 - npc specialist in some crafts
@@ -19,3 +22,4 @@
 - map with puzzles
 - mobs come from the edges and from caves
 - the character evolve like Ragnarok
+- special quests to evolve or get a new ability

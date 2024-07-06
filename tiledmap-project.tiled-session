@@ -1,0 +1,29 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+    },
+    "last.imagePath": "C:/Users/Jomar/Downloads/projetos/mu-game/src/assets/tilemaps/tiles",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": "1",
+    "map.orientation": "2",
+    "map.tileHeight": 80,
+    "map.tileWidth": 160,
+    "openFiles": [
+    ],
+    "project": "tiledmap-project.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 80,
+        "width": 160
+    },
+    "tileset.useTransparentColor": true
+}

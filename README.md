@@ -6,7 +6,7 @@
 - market: auction house
 - dog
 - mercenary (tank, healer, damage, bruiser) level by price
-  - hire a mercenary that have an ability to complete a dungeon 
+  - hire a mercenary that have an ability to complete a dungeon
 - classes: druid, mage, archer,
 - races: born in different regions
 - factions
@@ -32,3 +32,8 @@
 - dodge, avoid, block
 - mana,
 - npc with special story that will return you a favor
+
+## Tecnologies and assets
+
+- [Tiledmap]()
+- [Phaser](https://phaser.io/)

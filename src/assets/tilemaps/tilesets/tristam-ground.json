@@ -1,0 +1,21 @@
+{ "columns":5,
+ "grid":
+    {
+     "height":80,
+     "orientation":"isometric",
+     "width":160
+    },
+ "image":"..\/tiles\/tristam-ground.png",
+ "imageheight":959,
+ "imagewidth":800,
+ "margin":0,
+ "name":"tristam-ground",
+ "spacing":0,
+ "tilecount":55,
+ "tiledversion":"1.11.0",
+ "tileheight":80,
+ "tilewidth":160,
+ "transparentcolor":"#ff00ff",
+ "type":"tileset",
+ "version":"1.10"
+}

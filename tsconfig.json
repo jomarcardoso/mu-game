@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    // "checkJs": true,
+    "target": "es5",
+    "allowJs": true,
+    "baseUrl": "."
+  },
+  "include": ["./index.d.ts", "**/*.js"],
+  "exclude": ["node_modules", "./dist/"]
+}

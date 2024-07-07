@@ -10,6 +10,9 @@ class Example extends Phaser.Scene {
       'assets/tilemaps/tiles/tristam-ground.png',
     );
     this.load.tilemapTiledJSON('tristam', 'assets/tilemaps/maps/tristam.json');
+
+    this.load.image('tiles', 'assets/tilemaps/tiles/tristam-ground.png');
+    this.load.json('map', 'assets/tilemaps/maps/tristam.json');
   }
 
   create() {
@@ -31,15 +34,53 @@ class Example extends Phaser.Scene {
     // const terrainset = this.map.addTilesetImage('tristam-ground');
     // const ground = this.map.createLayer('ground', terrainset);
 
-    const map = this.add.tilemap('tristam');
-    const ground = map.addTilesetImage('tristam-ground', 'tristam-ground');
-    const layer1 = map.createLayer('ground', [ground]);
+    //  Parse the data out of the map
+    const data = this.cache.json.get('map');
+
+    console.log(data);
+
+    const tilewidth = data.tilewidth;
+    const tileheight = data.tileheight;
+
+    const tileWidthHalf = tilewidth / 2;
+    const tileHeightHalf = tileheight / 2;
+
+    const layer = data.layers[0].data;
+
+    const mapwidth = data.layers[0].width;
+    const mapheight = data.layers[0].height;
+
+    const centerX = mapwidth * tileWidthHalf;
+    const centerY = 80;
+
+    let i = 0;
+
+    for (let y = 0; y < mapheight; y++) {
+      for (let x = 0; x < mapwidth; x++) {
+        const id = layer[i] - 1;
+
+        console.log(x, y);
+
+        const tx = (x - y) * tileWidthHalf;
+        const ty = (x + y) * tileHeightHalf;
+
+        const tile = this.add.image(centerX + tx, centerY + ty, 'tiles', id);
+
+        tile.depth = centerY + ty;
+
+        i++;
+      }
+    }
+
+    // const map = this.add.tilemap('tristam');
+    // const ground = map.addTilesetImage('tristam-ground', 'tristam-ground');
+    // const layer1 = map.createLayer('ground', ground);
   }
 }
 
 const config = {
-  // type: Phaser.AUTO,
-  type: Phaser.WEBGL,
+  type: Phaser.AUTO,
+  // type: Phaser.WEBGL,
   width: 800,
   height: 600,
   scene: Example,

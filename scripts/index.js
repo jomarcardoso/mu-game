@@ -13,8 +13,9 @@ class Example extends Phaser.Scene {
   }
 
   create() {
-    const map = this.make.tilemap({ key: 'tristam' });
-    // const terrainset = map.addTilesetImage('tristam-ground');
+    // this.make
+    //   .tilemap({ key: 'tristam' })
+    //   .createLayer('ground', 'tristam-ground');
     // const objectsset = map.addTilesetImage('objects');
     // const collisions = map.addTilesetImage('collisions');
     // map.createStaticLayer('Tile Layer', [objectsset, terrainset]);
@@ -25,12 +26,20 @@ class Example extends Phaser.Scene {
 
     // this.physics.world.bounds.width = map.widthInPixels;
     // this.physics.world.bounds.height = map.heightInPixels;
-    this.map = map;
+
+    // this.map = this.make.tilemap({ key: 'tristam' });
+    // const terrainset = this.map.addTilesetImage('tristam-ground');
+    // const ground = this.map.createLayer('ground', terrainset);
+
+    const map = this.add.tilemap('tristam');
+    const ground = map.addTilesetImage('tristam-ground', 'tristam-ground');
+    const layer1 = map.createLayer('ground', [ground]);
   }
 }
 
 const config = {
-  type: Phaser.AUTO,
+  // type: Phaser.AUTO,
+  type: Phaser.WEBGL,
   width: 800,
   height: 600,
   scene: Example,

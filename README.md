@@ -41,3 +41,4 @@
 ## Tutorials
 
 - [Grid-Based Movement in a Top-Down 2D RPG With Phaser 3](https://medium.com/swlh/grid-based-movement-in-a-top-down-2d-rpg-with-phaser-3-e3a3486eb2fd)
+- [Animate Spritesheets in a Phaser Game](https://www.thepolyglotdeveloper.com/2020/07/animate-spritesheets-phaser-game/)

@@ -2,16 +2,14 @@ class Example extends Phaser.Scene {
   preload() {
     this.load.image(
       'tristam-ground',
-      'assets/tilemaps/tiles/tristam-ground.png',
+      'assets/spritesheets/tiles/tristam-ground.png',
     );
-    this.load.tilemapTiledJSON('tristam', 'assets/tilemaps/maps/tristam.json');
+    this.load.tilemapTiledJSON('tristam', 'assets/maps/tristam.json');
 
     this.load.spritesheet('druid', 'assets/spritesheets/characters/druid.gif', {
       frameWidth: 48,
       frameHeight: 80,
     });
-    this.load.image('tiles', 'assets/tilemaps/tiles/tristam-ground.png');
-    this.load.json('map', 'assets/tilemaps/maps/tristam.json');
   }
 
   createMap() {
@@ -61,6 +59,37 @@ class Example extends Phaser.Scene {
     );
     this.cameras.main.startFollow(this.player);
     this.cameras.main.roundPixels = true; // avoid tile bleed
+  }
+
+  update(_time, delta) {
+    console.log(delta);
+
+    const cursors = this.input.keyboard.createCursorKeys();
+    if (cursors.left.isDown) {
+      this.movePlayer('left');
+    } else if (cursors.right.isDown) {
+      this.movePlayer('right');
+    } else if (cursors.up.isDown) {
+      this.movePlayer('up');
+    } else if (cursors.down.isDown) {
+      this.movePlayer('down');
+    }
+  }
+
+  movePlayer(direction) {
+    console.log(direction);
+
+    if (!this.isMoving()) {
+      this.startMoving(direction);
+    }
+  }
+
+  isMoving() {
+    return this.movementDirection != 'none';
+  }
+
+  startMoving(direction) {
+    this.movementDirection = direction;
   }
 }
 

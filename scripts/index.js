@@ -1,93 +1,83 @@
 class Example extends Phaser.Scene {
   preload() {
-    // this.load.setBaseURL('https://labs.phaser.io');
-
-    // this.load.image('sky', 'assets/skies/space3.png');
-    // this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-    // this.load.image('red', 'assets/particles/red.png');
     this.load.image(
       'tristam-ground',
       'assets/tilemaps/tiles/tristam-ground.png',
     );
     this.load.tilemapTiledJSON('tristam', 'assets/tilemaps/maps/tristam.json');
 
+    this.load.spritesheet('druid', 'assets/spritesheets/characters/druid.gif', {
+      frameWidth: 48,
+      frameHeight: 80,
+    });
     this.load.image('tiles', 'assets/tilemaps/tiles/tristam-ground.png');
     this.load.json('map', 'assets/tilemaps/maps/tristam.json');
   }
 
+  createMap() {
+    this.map = this.add.tilemap('tristam');
+    const ground = this.map.addTilesetImage('tristam-ground', 'tristam-ground');
+    const layer1 = this.map.createLayer('ground', ground);
+
+    // this.physics.world.bounds.width = this.map.widthInPixels;
+    // this.physics.world.bounds.height = this.map.heightInPixels;
+  }
+
   create() {
-    // this.make
-    //   .tilemap({ key: 'tristam' })
-    //   .createLayer('ground', 'tristam-ground');
-    // const objectsset = map.addTilesetImage('objects');
-    // const collisions = map.addTilesetImage('collisions');
-    // map.createStaticLayer('Tile Layer', [objectsset, terrainset]);
-    // map.createStaticLayer('Tile Layer 2', [objectsset, terrainset]);
-    // this.colLayer = map.createStaticLayer('Collisions Layer', [collisions]);
-    // this.colLayer.visible = false;
-    // map.setCollision([0, 1]);
+    this.createMap();
+    this.createPlayer();
+  }
 
-    // this.physics.world.bounds.width = map.widthInPixels;
-    // this.physics.world.bounds.height = map.heightInPixels;
+  createPlayer() {
+    const playerSprite = this.add.sprite(0, 0, 'druid');
+    playerSprite.setDepth(2);
+    playerSprite.scale = 3;
+    this.cameras.main.startFollow(playerSprite);
+    this.cameras.main.roundPixels = true;
+    // const player = new Phaser.Player(
+    //   playerSprite,
+    //   new Phaser.Math.Vector2(6, 6),
+    // );
 
-    // this.map = this.make.tilemap({ key: 'tristam' });
-    // const terrainset = this.map.addTilesetImage('tristam-ground');
-    // const ground = this.map.createLayer('ground', terrainset);
+    const offsetX = 80;
+    const offsetY = 80;
+    const tilePos = new Phaser.Math.Vector2(6, 6);
 
-    //  Parse the data out of the map
-    const data = this.cache.json.get('map');
+    playerSprite.setOrigin(0.5, 1);
+    playerSprite.setPosition(
+      tilePos.x * 80 + offsetX,
+      tilePos.y * 80 + offsetY,
+    );
+    playerSprite.setFrame(55);
+  }
 
-    console.log(data);
-
-    const tilewidth = data.tilewidth;
-    const tileheight = data.tileheight;
-
-    const tileWidthHalf = tilewidth / 2;
-    const tileHeightHalf = tileheight / 2;
-
-    const layer = data.layers[0].data;
-
-    const mapwidth = data.layers[0].width;
-    const mapheight = data.layers[0].height;
-
-    const centerX = mapwidth * tileWidthHalf;
-    const centerY = 80;
-
-    let i = 0;
-
-    for (let y = 0; y < mapheight; y++) {
-      for (let x = 0; x < mapwidth; x++) {
-        const id = layer[i] - 1;
-
-        console.log(x, y);
-
-        const tx = (x - y) * tileWidthHalf;
-        const ty = (x + y) * tileHeightHalf;
-
-        const tile = this.add.image(centerX + tx, centerY + ty, 'tiles', id);
-
-        tile.depth = centerY + ty;
-
-        i++;
-      }
-    }
-
-    // const map = this.add.tilemap('tristam');
-    // const ground = map.addTilesetImage('tristam-ground', 'tristam-ground');
-    // const layer1 = map.createLayer('ground', ground);
+  updateCamera() {
+    // limit camera to map
+    this.cameras.main.setBounds(
+      0,
+      0,
+      this.map.widthInPixels,
+      this.map.heightInPixels,
+    );
+    this.cameras.main.startFollow(this.player);
+    this.cameras.main.roundPixels = true; // avoid tile bleed
   }
 }
 
+/**
+ * @type {Phaser.Types.Core.GameConfig}
+ */
 const config = {
   type: Phaser.AUTO,
   // type: Phaser.WEBGL,
-  width: 800,
-  height: 600,
+  width: window.innerWidth,
+  height: window.innerHeight,
   scene: Example,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
+  physics: {},
 };
 
 const game = new Phaser.Game(config);

@@ -27,13 +27,13 @@ class Example extends Phaser.Scene {
   }
 
   createPlayer() {
-    const playerSprite = this.add.sprite(0, 0, 'druid');
-    playerSprite.setDepth(2);
-    playerSprite.scale = 3;
-    this.cameras.main.startFollow(playerSprite);
+    this.playerSprite = this.add.sprite(0, 0, 'druid');
+    this.playerSprite.setDepth(2);
+    this.playerSprite.scale = 3;
+    this.cameras.main.startFollow(this.playerSprite);
     this.cameras.main.roundPixels = true;
     // const player = new Phaser.Player(
-    //   playerSprite,
+    //   this.playerSprite,
     //   new Phaser.Math.Vector2(6, 6),
     // );
 
@@ -41,12 +41,12 @@ class Example extends Phaser.Scene {
     const offsetY = 80;
     const tilePos = new Phaser.Math.Vector2(6, 6);
 
-    playerSprite.setOrigin(0.5, 1);
-    playerSprite.setPosition(
-      tilePos.x * 80 + offsetX,
-      tilePos.y * 80 + offsetY,
-    );
-    playerSprite.setFrame(55);
+    this.lastPositionX = tilePos.x * 80 + offsetX;
+    this.lastPositionY = tilePos.y * 80 + offsetY;
+
+    this.playerSprite.setOrigin(0.5, 1);
+    this.playerSprite.setPosition(this.lastPositionX, this.lastPositionY);
+    this.playerSprite.setFrame(55);
   }
 
   updateCamera() {
@@ -67,17 +67,25 @@ class Example extends Phaser.Scene {
     const cursors = this.input.keyboard.createCursorKeys();
     if (cursors.left.isDown) {
       this.movePlayer('left');
+      this.lastPositionX -= 80;
     } else if (cursors.right.isDown) {
       this.movePlayer('right');
+      this.lastPositionX += 80;
     } else if (cursors.up.isDown) {
-      this.movePlayer('up');
+      // this.movePlayer('up');
+      this.lastPositionY -= 80;
     } else if (cursors.down.isDown) {
-      this.movePlayer('down');
+      // this.movePlayer('down');
+      this.lastPositionY += 80;
     }
+
+    this.playerSprite?.setPosition(this.lastPositionX, this.lastPositionY);
   }
 
   movePlayer(direction) {
     console.log(direction);
+
+    this.playerSprite?.setPosition(120, 120);
 
     if (!this.isMoving()) {
       this.startMoving(direction);
